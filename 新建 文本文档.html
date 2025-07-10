@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日开支记录表</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            min-width: 600px;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e3f2fd;
+        }
+        .sum-row {
+            background-color: #2ecc71 !important;
+            color: white;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            flex: 1;
+        }
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        #dateDisplay {
+            text-align: center;
+            margin: 15px 0;
+            font-weight: bold;
+            color: #7f8c8d;
+        }
+        .category-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .food { background-color: #ffeaa7; color: #d35400; }
+        .transport { background-color: #81ecec; color: #006266; }
+        .shopping { background-color: #fab1a0; color: #b71540; }
+        .housing { background-color: #a29bfe; color: #2d3436; }
+        .medical { background-color: #ff7675; color: #c23616; }
+        .entertainment { background-color: #74b9ff; color: #192a56; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 每日开支记录表</h1>
+        
+        <div id="dateDisplay">今天是: <span id="currentDate"></span></div>
+        
+        <div class="table-container">
+            <table id="expenseTable">
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>开支类别</th>
+                        <th>金额 (¥)</th>
+                        <th>支付方式</th>
+                        <th>备注说明</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="date" value="2023-11-01"></td>
+                        <td>
+                            <select>
+                                <option value="food">餐饮</option>
+                                <option value="transport">交通</option>
+                                <option value="shopping">购物</option>
+                                <option value="housing">居住</option>
+                                <option value="medical">医疗</option>
+                                <option value="entertainment">娱乐</option>
+                            </select>
+                        </td>
+                        <td><input type="number" step="0.01" placeholder="0.00"></td>
+                        <td>
+                            <select>
+                                <option>现金</option>
+                                <option selected>支付宝</option>
+                                <option>微信支付</option>
+                                <option>信用卡</option>
+                                <option>公交卡</option>
+                            </select>
+                        </td>
+                        <td><input type="text" placeholder="开支说明" value="午餐外卖"></td>
+                        <td>
+                            <button class="delete-btn" style="background: #e74c3c; width:100%">删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="date" value="2023-11-01"></td>
+                        <td>
+                            <select>
+                                <option value="transport" selected>交通</option>
+                                <option value="food">餐饮</option>
+                                <option value="shopping">购物</option>
+                                <option value="housing">居住</option>
+                                <option value="medical">医疗</option>
+                                <option value="entertainment">娱乐</option>
+                            </select>
+                        </td>
+                        <td><input type="number" step="0.01" placeholder="0.00" value="8.50"></td>
+                        <td>
+                            <select>
+                                <option>现金</option>
+                                <option>支付宝</option>
+                                <option>微信支付</option>
+                                <option>信用卡</option>
+                                <option selected>公交卡</option>
+                            </select>
+                        </td>
+                        <td><input type="text" placeholder="开支说明" value="地铁通勤"></td>
+                        <td>
+                            <button class="delete-btn" style="background: #
